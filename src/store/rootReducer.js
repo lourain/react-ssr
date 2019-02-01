@@ -1,9 +1,8 @@
 import {combineReducers} from 'redux'
-import count from './reducers/reducer1'
-import hello from './reducers/reducer2'
+import {directory,hello,count} from './reducers/reducer'
 
 const rootReducer = combineReducers({
-    count,hello
+    count,hello,directory
 })
 
 export default rootReducer

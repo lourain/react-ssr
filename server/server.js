@@ -17,7 +17,8 @@ const path = require('path')
 import React from 'react';
 import { renderToNodeStream } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
-
+import {Provider} from 'react-redux'
+import store from '../src/store'
 import Route from '../src/route'
 
 server.use(express.static(path.resolve('dist')))
@@ -29,10 +30,12 @@ server.use((req, res, next) => {
     const context = {}
     const ReactSSR = renderToNodeStream(
         (
-            <StaticRouter location={req.url}
-                context={context}>
-                <Route />
-            </StaticRouter>
+            <Provider store={store}>
+                <StaticRouter location={req.url}
+                    context={context}>
+                    <Route />
+                </StaticRouter>
+            </Provider>
         )
     )
     
@@ -63,13 +66,14 @@ server.use((req, res, next) => {
         res.write(
                 `</div>
             </body>
+            <script src='server-bundle.js'></script>
         </html>`)
         res.end()
 
     })
 })
 
-server.listen(9999, function () {
+server.listen(7777, function () {
     console.log('runnig9999...');
 
 })

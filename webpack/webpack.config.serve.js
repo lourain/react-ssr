@@ -5,12 +5,12 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
     mode: 'development',
-    target: 'node',
-    entry: path.resolve(__dirname, "../entry/serve-entry"),
+    // target: 'node',
+    entry: path.resolve(__dirname, "../src/index.js"),
     output: {
         filename: 'server-bundle.js',
         path: path.resolve(__dirname, '../dist'),
-        libraryTarget: 'commonjs2'
+        // libraryTarget: 'commonjs2'
     },
     module: {
         rules: [
